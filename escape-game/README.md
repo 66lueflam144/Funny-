@@ -39,10 +39,10 @@
    │   ├── indexjs.js
    │   ├── maze.js
    │   └── typagirl.js
-   ├── failure.html
-   ├── index.html
-   ├── maze.html
-   ├── success.html
-   └── typist.html
+   ├── failure.html # 失败界面
+   ├── index.html  # 首页
+   ├── maze.html  # 井字棋游戏
+   ├── success.html # 成功界面
+   └── typist.html # 打字游戏
 
 ```
