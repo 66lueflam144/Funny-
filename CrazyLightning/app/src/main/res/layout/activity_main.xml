@@ -1,0 +1,162 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="16dp"
+    android:gravity = "center">
+
+
+    <!-- 左边图片 -->
+
+    <TextView
+        android:id="@+id/watermarkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:alpha="0.3"
+        android:text="YSM"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/leftImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/li"
+        android:contentDescription="Left Image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- 右边图片 -->
+    <ImageView
+        android:id="@+id/rightImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/fox"
+        android:contentDescription="Right Image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- 左边的用户名标签 -->
+    <TextView
+        android:id="@+id/usernameLabelLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户名:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/leftImageView"
+        app:layout_constraintStart_toStartOf="@id/leftImageView"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 左边的用户名输入框 -->
+    <EditText
+        android:id="@+id/usernameEditTextLeft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入用户名"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/usernameLabelLeft"
+        app:layout_constraintStart_toStartOf="@id/leftImageView"
+        app:layout_constraintEnd_toEndOf="@id/leftImageView"/>
+
+    <!-- 左边的密码标签 -->
+    <TextView
+        android:id="@+id/passwordLabelLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密码:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/usernameEditTextLeft"
+        app:layout_constraintStart_toStartOf="@id/leftImageView"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 左边的密码输入框 -->
+    <EditText
+        android:id="@+id/passwordEditTextLeft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/passwordLabelLeft"
+        app:layout_constraintStart_toStartOf="@id/leftImageView"
+        app:layout_constraintEnd_toEndOf="@id/leftImageView"/>
+
+    <!-- 右边的用户名标签 -->
+    <TextView
+        android:id="@+id/usernameLabelRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户名:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/rightImageView"
+        app:layout_constraintStart_toStartOf="@id/rightImageView"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 右边的用户名输入框 -->
+    <EditText
+        android:id="@+id/usernameEditTextRight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入用户名"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/usernameLabelRight"
+        app:layout_constraintStart_toStartOf="@id/rightImageView"
+        app:layout_constraintEnd_toEndOf="@id/rightImageView"/>
+
+    <!-- 右边的密码标签 -->
+    <TextView
+        android:id="@+id/passwordLabelRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密码:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/usernameEditTextRight"
+        app:layout_constraintStart_toStartOf="@id/rightImageView"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 右边的密码输入框 -->
+    <EditText
+        android:id="@+id/passwordEditTextRight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/passwordLabelRight"
+        app:layout_constraintStart_toStartOf="@id/rightImageView"
+        app:layout_constraintEnd_toEndOf="@id/rightImageView"/>
+
+    <!-- 登陆按钮 -->
+
+    <!-- 退出按钮 -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:text="LOGIN"
+        app:layout_constraintEnd_toStartOf="@id/exitButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditTextRight" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="192dp"
+        android:text="BACK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/loginButton"
+        app:layout_constraintTop_toBottomOf="@id/passwordEditTextRight" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
