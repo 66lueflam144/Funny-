@@ -1,0 +1,130 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 圆形 ProgressBar -->
+    <ProgressBar
+        android:id="@+id/circularProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="@color/design_default_color_primary"
+        android:layout_gravity="center"
+        style="?android:attr/progressBarStyleLarge"/>
+
+    <!-- 水平 ProgressBar -->
+    <ProgressBar
+        android:id="@+id/linearProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="30"
+        android:progressTint="@color/design_default_color_primary"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_marginTop="16dp" />
+
+    <!-- SeekBar -->
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="50"
+        android:layout_marginTop="16dp"/>
+
+    <!-- RatingBar -->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:rating="3"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+
+    <!-- 一组 RadioButtons -->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp">
+
+        <RadioButton
+            android:id="@+id/radioCircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="圆状"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/radioLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="条状"/>
+
+        <RadioButton
+            android:id="@+id/radioSeekBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SeekBar"/>
+
+        <RadioButton
+            android:id="@+id/radioRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RatingBar"/>
+    </RadioGroup>
+
+    <!-- 增加进度和重置按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/increaseProgress1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增加第一进度"/>
+
+        <Button
+            android:id="@+id/increaseProgress2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增加第二进度"
+            android:layout_marginLeft="16dp"/>
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="复原"
+            android:layout_marginLeft="16dp"/>
+        <Button
+            android:id="@+id/btnIncreaseProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="增加进度"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YSM"
+        android:layout_gravity="center" />
+</LinearLayout>
