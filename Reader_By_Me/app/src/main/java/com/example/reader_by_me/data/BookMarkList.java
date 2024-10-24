@@ -7,17 +7,20 @@ public class BookMarkList {
     private String link;
     private String author;
     private String pubDate;
-    private String imageUrl;
+
     private String description;
 
 
-    public BookMarkList(String title, String link, String author, String pubDate, String imageUrl, String description) {
+    public BookMarkList(String title, String link, String author, String pubDate, String description) {
         this.title = title;
         this.link = link;
         this.author = author;
         this.pubDate = pubDate;
-        this.imageUrl = imageUrl;
         this.description = description;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @NonNull
@@ -28,7 +31,6 @@ public class BookMarkList {
                 ", link='" + link + '\'' +
                 ", author='" + author + '\'' +
                 ", pubDate='" + pubDate + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

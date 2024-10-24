@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+
 android {
     namespace = "com.example.reader_by_me"
     compileSdk = 34
@@ -36,7 +37,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.jsoup)
     implementation(libs.robolectric)
     implementation(libs.okhttp3)
     implementation(libs.glide) // Glide依赖

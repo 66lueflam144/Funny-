@@ -1,97 +1,77 @@
 package com.example.reader_by_me;
-
-import com.example.reader_by_me.data.BookMarkList;
 import com.example.reader_by_me.data.Show_You_Real_List;
+import com.example.reader_by_me.network.A_Sipder;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
 import org.robolectric.RobolectricTestRunner;
-import org.xmlpull.v1.XmlPullParserException;
+import org.robolectric.annotation.Config;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
-import com.example.reader_by_me.tools.Parse_Me;
+import okhttp3.OkHttpClient;
+import static org.junit.Assert.*;
 
 
 @RunWith(RobolectricTestRunner.class)
+@Config(manifest=Config.NONE)
 public class whatSup {
 
-    private Parse_Me parseMe;
-    private Parse_Me.Callback callback;
+    private A_Sipder aSipder;
+    
 
     @Before
-    public void setUp() throws XmlPullParserException {
-        parseMe = new Parse_Me();
-        callback = mock(Parse_Me.Callback.class);
+    public void setUp() throws Exception {
+        XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
+        aSipder = new A_Sipder(parser);
     }
 
     @Test
-    public void testParserWithASmile_Success() throws Exception {
-        String testUrl = "https://jesor.me/feed.xml";
-        CountDownLatch latch = new CountDownLatch(1);
+    public void testFetchData() throws Exception {
+        String testUrl = "https://www.ruanyifeng.com/blog/atom.xml"; // 使用实际的 RSS feed URL
+        final CountDownLatch latch = new CountDownLatch(1);
+        final List<Show_You_Real_List>[] result = new List[1];
+        final Exception[] error = new Exception[1];
 
-        // 模拟成功的网络请求
-        doAnswer(invocation -> {
-            // 这里我们直接调用 onSuccess 方法，模拟解析后的结果
+        aSipder.fetchData(testUrl, new A_Sipder.FetchCallback<List<Show_You_Real_List>>() {
+            @Override
+            public void onSuccess(List<Show_You_Real_List> data) {
+                result[0] = data;
+                latch.countDown();
+            }
 
-            List<Show_You_Real_List> mockList = parseMe.parseXML(); // 直接调用解析方法
-//            ((Parse_Me.Callback) invocation.getArguments()[0]).onSuccess(mockList);
-            Parse_Me.Callback callback = (Parse_Me.Callback) invocation.getMock();
-            latch.countDown();
-            return null;
-        }).when(callback).onSuccess(anyList());
+            @Override
+            public void onFailure(Exception e) {
+                error[0] = e;
+                latch.countDown();
+            }
+        });
 
-        // 调用 parser_with_a_smile 方法
-        parseMe.parser_with_a_smile(testUrl, callback, latch);
+        // 等待异步操作完成
+        assertTrue(latch.await(10, TimeUnit.SECONDS));
 
-
-        // 等待异步操作完成，设置超时
-        if (!latch.await(5, TimeUnit.SECONDS)) {
-            System.out.println("Operation timed out.");
-            return; // 或者抛出异常
+        if (error[0] != null) {
+            fail("Fetch failed with error: " + error[0].getMessage());
         }
 
-        // 验证回调的 onSuccess 方法被调用
-        ArgumentCaptor<List<Show_You_Real_List>> captor = ArgumentCaptor.forClass(List.class);
-        verify(callback, timeout(5000)).onSuccess(captor.capture());
+        assertNotNull("Result should not be null", result[0]);
+        assertFalse("Result should not be empty", result[0].isEmpty());
 
-        // 获取解析后的列表
-        List<Show_You_Real_List> result = captor.getValue();
-
-        // 输出解析后的内容
-        System.out.println("---------------------\nParsed entries:");
-        for (Show_You_Real_List item : result) {
-            System.out.println(item.toString()); // 假设你在 Show_You_Real_List 类中实现了 toString 方法
+        // 打印获取到的数据
+        for (Show_You_Real_List item : result[0]) {
+            System.out.println(item.toString());
         }
+        aSipder.closeClient();
 
-        // 进行断言，检查返回的结果
-//        List<Show_You_Real_List> result = captor.getValue();
-//        assertEquals(1, result.size());
+        
     }
-//
-//    @Test
-//    public void testParserWithASmile_Failure() throws Exception {
-//        String testUrl = "http://invalid-url.com/test.xml";
-//        CountDownLatch latch = new CountDownLatch(1);
-//
-//        // 模拟失败的网络请求
-//        doAnswer(invocation -> {
-//            ((Parse_Me.Callback) invocation.getArguments()[1]).onFailure(new Exception("Network error"));
-//            latch.countDown();
-//            return null;
-//        }).when(callback).onFailure(any(Exception.class));
-//
-//        parseMe.parser_with_a_smile(testUrl, callback);
-//        latch.await(); // 等待异步操作完成
-//
-//        // 验证回调的 onFailure 方法被调用
-//        verify(callback, timeout(5000)).onFailure(any(Exception.class));
-//    }
+
+    
+
+    
 }

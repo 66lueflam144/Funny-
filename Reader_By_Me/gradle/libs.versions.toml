@@ -8,9 +8,8 @@ material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.1.4"
 glide = "4.15.0"
-jsoup = "1.16.1"
-robolectric = "4.9"
-okhttp3 = "4.9.3"
+robolectric = "4.9.1"
+okhttp3 = "4.12.0"
 
 
 
@@ -24,7 +23,6 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
-jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp3" }
 
